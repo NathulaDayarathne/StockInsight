@@ -26,7 +26,7 @@ namespace api.Repository
         //implementation of the method GetAllAsync() in IStockRepository interface
         public  async Task<List<Stock>> GetAllAsync()
         {
-            return  await _context.Stocks.ToListAsync();
+            return  await _context.Stocks.Include(c => c.Comments).ToListAsync();
         }
         
 
@@ -58,10 +58,11 @@ namespace api.Repository
 
         public async Task<Stock?> GetByIdAsync(int id)
         {
-           
-            var stock =  await _context.Stocks.FindAsync(id);
 
-            return stock;
+            var stocks = await _context.Stocks.Include(c => c.Comments).FirstOrDefaultAsync(i => i.Id == id);
+            return stocks;
+
+            
 
         }
 
