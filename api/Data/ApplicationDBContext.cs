@@ -1,4 +1,5 @@
 using api.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -6,7 +7,7 @@ using System.IO;
 
 namespace api.Data
 {
-  public class ApplicationDBContext : DbContext
+  public class ApplicationDBContext : IdentityDbContext<AppUser>
 {
 
     public ApplicationDBContext(DbContextOptions<ApplicationDBContext> dbContextOptions): base(dbContextOptions)
