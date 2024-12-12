@@ -1,23 +1,20 @@
+using System.IO;
 using api.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace api.Data
 {
-  public class ApplicationDBContext : IdentityDbContext<AppUser>
-{
-
-    public ApplicationDBContext(DbContextOptions<ApplicationDBContext> dbContextOptions): base(dbContextOptions)
+    public class ApplicationDBContext : IdentityDbContext<AppUser>
     {
-        
-    }
+        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> dbContextOptions)
+            : base(dbContextOptions) { }
 
-    public DbSet<Stock> Stocks { get; set; }
-    public DbSet<Comment> Comments { get;set;}
-}
+        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+    }
 
     // //Specify ApplicationDBContext in IDesignTimeDbContextFactory<ApplicationDBContext>
     // public class ApplicationDBContextFactory : IDesignTimeDbContextFactory<ApplicationDBContext>

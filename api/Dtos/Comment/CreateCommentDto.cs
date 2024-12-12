@@ -18,6 +18,6 @@ namespace api.Dtos.Comment
         [MaxLength(5, ErrorMessage = "Content cannot be over 280 charactors")]
         public string Content { get; set; } = string.Empty;
 
-        
+
     }
 }
