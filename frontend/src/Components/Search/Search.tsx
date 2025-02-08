@@ -17,7 +17,8 @@ const Search: React.FC<Props> = (props: Props): JSX.Element => {
   return (
     <div>
       <input value={search} onChange={(e) => handleChange(e)} />
-      <button onClick={(e) => handleSubmit(e)}>Click This Shit</button>
+      <button onClick={(e) => handleSubmit(e)}>Click This</button>
+      <p>you are typing..{search}</p>
     </div>
   );
 };
