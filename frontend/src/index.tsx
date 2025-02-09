@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-console.log(searchCompanies("Lm"));
+//console.log(searchCompanies("Lm"));
 root.render(
   <React.StrictMode>
     <App />
