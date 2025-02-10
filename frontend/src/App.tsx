@@ -32,7 +32,8 @@ function App() {
   
   return <div className="App">
     <Search handleSubmit={handleSubmit} search={search} handleChange={handleChange} />
-    {/* <CardList/> */}
+    {serverError && <h1>{serverError}</h1>}
+    <CardList/> 
     <p></p>
   </div>;
 }
