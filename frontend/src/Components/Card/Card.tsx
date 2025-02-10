@@ -4,13 +4,13 @@ import "./Card.css";
 interface Props {
   companyName: string;
   ticker: string;
-  price: number;
+  currency: string;
 }
 
 const Card: React.FC<Props> = ({
   companyName,
   ticker,
-  price,
+  currency,
 }: Props): JSX.Element => {
   return (
     <div className="card">
@@ -23,7 +23,7 @@ const Card: React.FC<Props> = ({
         <h2>
           {companyName} ({ticker})
         </h2>
-        <p>${price}</p>
+        <p>{currency}</p>
       </div>
       <p className="infon">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero aut

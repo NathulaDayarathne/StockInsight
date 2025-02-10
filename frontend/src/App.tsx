@@ -6,6 +6,8 @@ import CardList from "./Components/CardList/CardList";
 import Search from "./Components/Search/Search";
 import { CompanySearch } from "./company";
 import { searchCompanies } from "./api";
+import Card from "./Components/Card/Card";
+
 
 function App() {
 
@@ -33,9 +35,27 @@ function App() {
   return <div className="App">
     <Search handleSubmit={handleSubmit} search={search} handleChange={handleChange} />
     {serverError && <h1>{serverError}</h1>}
-    <CardList/> 
+
+    <div className="card-list">
+        {searchResult.map((company) => (
+          <Card
+            key={company.symbol}
+            companyName={company.name}
+            ticker={company.symbol}
+            currency={company.currency}
+          />
+        ))}
+      </div>
+
+    
     <p></p>
   </div>;
 }
 
 export default App;
+
+
+
+
+
+
