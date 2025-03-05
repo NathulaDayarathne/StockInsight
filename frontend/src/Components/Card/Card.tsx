@@ -1,13 +1,17 @@
 import React from "react";
 import "./Card.css";
+import AddPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
+import { SyntheticEvent } from 'react'
 
 interface Props {
   companyName: string;
   ticker: string;
   currency: string;
+  onPortfolioCreate: (e: SyntheticEvent) => void;
 }
 
 const Card: React.FC<Props> = ({
+  onPortfolioCreate,
   companyName,
   ticker,
   currency,
@@ -31,6 +35,11 @@ const Card: React.FC<Props> = ({
         placeat impedit explicabo ducimus voluptates aperiam suscipit. Obcaecati
         temporibus nobis sunt minima?
       </p>
+
+      <AddPortfolio
+        onPortfolioCreate={onPortfolioCreate}
+        symbol={ticker}
+      />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Search from "./Components/Search/Search";
 import { CompanySearch } from "./company";
 import { searchCompanies } from "./api";
 import Card from "./Components/Card/Card";
+import { on } from "events";
 
 
 function App() {
@@ -31,6 +32,11 @@ function App() {
       }
       console.log(searchResult);
     };
+
+    const onPortfolioCreate = (e: SyntheticEvent) => {
+      e.preventDefault();
+      console.log("Portfolio created", e);
+    };
   
   return <div className="App">
     <Search handleSubmit={handleSubmit} search={search} handleChange={handleChange} />
@@ -43,6 +49,7 @@ function App() {
             companyName={company.name}
             ticker={company.symbol}
             currency={company.currency}
+            onPortfolioCreate={onPortfolioCreate}
           />
         ))}
       </div>
