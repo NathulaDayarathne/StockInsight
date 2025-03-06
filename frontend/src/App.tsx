@@ -8,11 +8,13 @@ import { CompanySearch } from "./company";
 import { searchCompanies } from "./api";
 import Card from "./Components/Card/Card";
 import { on } from "events";
+import ListPortfolio from "./Components/Portfolio/ListPortfolio/ListPortfolio";
 
 
 function App() {
 
    const [search, setSearch] = useState<string>("");
+   const [portfolioValues, setPortfolioValues] = useState<string[]>([]);
    const[searchResult, setSearchResult] = useState<CompanySearch[]>([]);
    const [serverError, setServerError] = useState<string>("");
 
@@ -22,6 +24,8 @@ function App() {
       setSearch(e.target.value);
       console.log(e);
     };
+
+    
   
     const handleSubmit = async (e: SyntheticEvent) => {
       const result = await searchCompanies(search);
@@ -33,16 +37,25 @@ function App() {
       console.log(searchResult);
     };
 
-    const onPortfolioCreate = (e: SyntheticEvent) => {
+    const onPortfolioCreate = (e: any) => {
       e.preventDefault();
-      console.log("Portfolio created", e);
+      const exists = portfolioValues.find((value) => value === e.target[0].value);
+      if (exists) {
+        return;
+      }
+      const updatedPortfolio = [...portfolioValues, e.target[0].value]; //This creates a new array by copying all existing values from portfolioSearchValues and adding a new value from e.target[0].value.
+      setPortfolioValues(updatedPortfolio);
+      //console.log(e);
+
     };
   
   return <div className="App">
     <Search handleSubmit={handleSubmit} search={search} handleChange={handleChange} />
     {serverError && <h1>{serverError}</h1>}
 
+      
     <div className="card-list">
+      <ListPortfolio portfolioValues={portfolioValues}/>
         {searchResult.map((company) => (
           <Card
             key={company.symbol}
